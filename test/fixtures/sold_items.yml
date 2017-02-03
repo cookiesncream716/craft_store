@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  references: MyString
+  buyer: one
+  shipped: MyString
+  boolean: MyString
+  date_shipped: MyString
+  date: MyString
+
+two:
+  item: MyString
+  references: MyString
+  buyer: two
+  shipped: MyString
+  boolean: MyString
+  date_shipped: MyString
+  date: MyString

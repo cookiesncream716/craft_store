@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  price: 1.5
+  picture: MyString
+  category: one
+  sold: false
+  buyer: one
+  date_bought: 2017-02-01
+  shipped: false
+  date_shipped: 2017-02-01
+
+two:
+  name: MyString
+  description: MyString
+  price: 1.5
+  picture: MyString
+  category: two
+  sold: false
+  buyer: two
+  date_bought: 2017-02-01
+  shipped: false
+  date_shipped: 2017-02-01
