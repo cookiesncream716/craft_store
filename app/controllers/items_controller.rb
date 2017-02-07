@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
 		puts @messages
 		redirect_to root_path
 	end
+	def show
+		@item = Item.get_one(params[:id])
+	end
 	private
 	def item_params
 		params.require(:item).permit(:name, :description, :price, :picture, :category_id)

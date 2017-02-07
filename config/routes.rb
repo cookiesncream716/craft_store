@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root 'users#index'
 
   post '/items/create' => 'items#create'
+
+  get '/items/:id' => 'items#show'
+ 
 end

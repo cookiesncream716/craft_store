@@ -5,4 +5,10 @@ class UsersController < ApplicationController
 		@categories = Category.get_all
 		puts @categories
 	end
+	def show
+		respond_to do | format |
+			format.html
+			format.js
+		end		
+	end
 end

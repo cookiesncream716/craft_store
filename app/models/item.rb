@@ -24,4 +24,7 @@ class Item < ApplicationRecord
   		return @message
   	end
   end
+  def self.get_one(id)
+  	self.find(id)
+  end
 end
