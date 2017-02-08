@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   post '/items/create' => 'items#create'
 
   get '/items/:id' => 'items#show'
- 
+  get '/users/add_item/:id' => 'users#add_item'
+  get '/users/cart' => 'users#cart'
 end
