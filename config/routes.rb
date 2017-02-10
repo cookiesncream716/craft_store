@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root 'users#index'
 
   post '/items/create' => 'items#create'
+  post '/users/create' => 'users#create'
 
   get '/items/:id' => 'items#show'
   get '/users/add_item/:id' => 'users#add_item'
   get '/users/cart' => 'users#cart'
+  get '/users/purchase' => 'users#purchase'
 end

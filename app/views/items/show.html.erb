@@ -1,9 +1,12 @@
 <a href='/' class='row'>Back</a>
 
-<%= image_tag (@item.picture)%>
+<%= image_tag(@item.picture, :alt => @item.name,  :width => '30%')%>
 <h4><%= @item.name %></h4>
 <p><%= @item.category.category %></p>
 <p><%= @item.description %></p>
 <p><%= @item.price %></p>
+<form action='/users/add_item/<%= @item.id %>' method='get'>
+	<button class='btn'>Add to Cart</button>
+</form>
 
 

@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20170203212511) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.integer  "phone"
+    t.integer  "phone",           limit: 8
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "categories", force: :cascade do |t|

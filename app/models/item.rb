@@ -3,11 +3,12 @@ class Item < ApplicationRecord
   has_many :sold_items
 
   validates :name, :description, :picture, presence: true
-  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 1000000 }
+  # validates :price, presence: true, format: { :with => /^\d{1,6}(\.\d{0,2})?$/, numericality: true
+  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: true
  
 
   def self.get_all
-  	self.all
+  	self.all.where(sold: false)
   end
   def self.create_product(product)
   	new_item = self.new(product)
@@ -27,4 +28,7 @@ class Item < ApplicationRecord
   def self.get_one(id)
   	self.find(id)
   end
+  # def self.update_item()
+    # find each item in cart and mark as sold
+  # end
 end
