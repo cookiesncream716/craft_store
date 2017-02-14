@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 		redirect_to root_path 	
 	end
 	def cart
+		if not session[:cart]
+			session[:cart] = []
+		end
 		@cart = session[:cart]
 	end
 	def purchase

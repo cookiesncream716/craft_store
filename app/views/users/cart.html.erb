@@ -8,20 +8,19 @@
 		</tr>
 	</thead>
 	<tbody>
+	<% if @cart.length > 1 %>
 		<% @cart.each do | item | %>
 		<tr>
 			<td><%= item['name'] %></td>
 			<td class='cart_item'><%= item['price'] %></td>
 		</tr>
 		<% end %>
-
+	<% end %>
 	</tbody>
 </table>
 <form action='/users/purchase' method='get'>
 	<button id='buy_now'>Buy</button>
 </form>
-
-<%= @cart[0]['name'] %>
 
 <script language='javascript' type="text/javascript">
 	var data =  document.getElementsByClassName('cart_item');
