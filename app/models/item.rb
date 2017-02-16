@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :category
-  has_many :sold_items
+  has_many :solds
 
   validates :name, :description, :picture, presence: true
   # validates :price, presence: true, format: { :with => /^\d{1,6}(\.\d{0,2})?$/, numericality: true

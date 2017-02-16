@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203212511) do
+ActiveRecord::Schema.define(version: 20170216230956) do
 
   create_table "buyers", force: :cascade do |t|
     t.string   "first_name"
@@ -21,8 +21,18 @@ ActiveRecord::Schema.define(version: 20170203212511) do
     t.integer  "zip"
     t.integer  "phone",           limit: 8
     t.string   "password_digest"
+    t.string   "email"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "buyer_id"
+    t.boolean  "shipped"
+    t.date     "date_shipped"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["buyer_id"], name: "index_carts_on_buyer_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -43,16 +53,13 @@ ActiveRecord::Schema.define(version: 20170203212511) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
-  create_table "sold_items", force: :cascade do |t|
-    t.string   "item"
-    t.string   "references"
-    t.integer  "buyer_id"
-    t.boolean  "shipped",      default: false
-    t.string   "date_shipped"
-    t.string   "date"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["buyer_id"], name: "index_sold_items_on_buyer_id"
+  create_table "solds", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_solds_on_cart_id"
+    t.index ["item_id"], name: "index_solds_on_item_id"
   end
 
 end

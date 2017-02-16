@@ -9,6 +9,7 @@ class CreateBuyers < ActiveRecord::Migration[5.0]
       t.integer :zip
       t.integer :phone, :limit => 8
       t.string :password_digest
+      t.string :email
 
       t.timestamps
     end

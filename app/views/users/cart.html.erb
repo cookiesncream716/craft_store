@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<% if @cart.length > 1 %>
+	<% if @cart.length > 0 %>
 		<% @cart.each do | item | %>
 		<tr>
 			<td><%= item['name'] %></td>

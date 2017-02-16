@@ -1,13 +1,12 @@
 class Buyer < ApplicationRecord
-  has_secure_password
-  has_many :items
-  has_many :sold_items
+  has_many :carts
+  
   has_secure_password
   validates :first_name, :last_name, :address, :city, presence: true
   validates :state, presence: true, length: {is: 2}
   validates :zip, presence: true, length: {is: 5}, numericality: {only_integer: true}
   validates :phone, presence: true, length: {is: 10}, numericality: {only_integer: true}
-  # validates :email, presence: true, uniqueness: {case_sensitive: false}, email: true
+  validates :email, presence: true, uniqueness: {case_sensitive: false}, email: true
   validates :password, length: {minimum: 8}
 
   def self.create_buyer(buyer)
