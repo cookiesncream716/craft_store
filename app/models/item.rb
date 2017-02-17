@@ -28,7 +28,9 @@ class Item < ApplicationRecord
   def self.get_one(id)
   	self.find(id)
   end
-  # def self.update_item()
-    # find each item in cart and mark as sold
-  # end
+  def self.update_item(ids)
+    ids.each do | id |
+      self.find(id).update(sold: true)
+    end
+  end
 end
