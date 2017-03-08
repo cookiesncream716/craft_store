@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post '/items/create' => 'items#create'
   post '/users/create' => 'users#create'
+  post '/users/login' => 'users#login'
 
   get '/items/:id' => 'items#show'
   get '/users/add_item/:id' => 'users#add_item'

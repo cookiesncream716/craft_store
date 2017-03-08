@@ -2,9 +2,9 @@ class UsersController < ApplicationController
 	def index
 		# session.clear
 		@products = Item.get_all
-		puts @products
+		# puts @products
 		@categories = Category.get_all
-		puts @categories
+		# puts @categories
 	end
 	def add_item
 		if not session[:cart]
@@ -12,12 +12,17 @@ class UsersController < ApplicationController
 			session[:item_id] = []
 			product = Item.get_one(params[:id])
 			session[:cart].push(product)
-			session[:item_id].push(product.id)
+			session[:item_id].push(params[:id])
+			puts 'create session cart/item id'
+			puts session[:item_id]
 			flash[:added] = product.name + ' added to your cart'
 		else
 			product = Item.get_one(params[:id])
 			session[:cart].push(product)
 			session[:item_id].push(product.id)
+			puts 'adding to session'
+			puts product.id
+			puts session[:item_id]
 			flash[:added] = product.name + ' added to your cart'
 		end
 		redirect_to root_path 	
@@ -32,19 +37,27 @@ class UsersController < ApplicationController
 		@cart = session[:cart]
 	end
 	def create
-		Buyer.create_buyer(user_params)
-		puts 'Buyer id = ' + @message.buyer_id
-		session[:buyer_id] = @message.buyer_id
+		message = Buyer.create_buyer(user_params)
+		puts message
+		flash[:message] = message
 		# item id = session[:item_id]
-		Cart.create_cart(@message.buyer_id)
-		session[:cart_id] = @id
-		Sold.create_sold(session[:cart_id], session[:item_id])
-		Item.update_item(session[:item_id])
+		# Cart.create_cart(@message.buyer_id)
+		# session[:cart_id] = @id
+		# Sold.create_sold(session[:cart_id], session[:item_id])
+		# Item.update_item(session[:item_id])
 		# session.clear
-		redirect_to root_path
+		redirect_to '/users/purchase'
+	end
+	def login
+		@user = Buyer.find_by(email: params[:email])
+		puts @user
+		if @user && @user.authenticate(params[:password])
+			session[:buyer_id] = @user.id
+			# redirect_to ''
+		end
 	end
 	private
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :address, :city, :state, :zip, :phone, :password, :password_confirmation)
+		params.require(:user).permit(:first_name, :last_name, :address, :city, :state, :zip, :phone, :email, :password, :password_confirmation)
 	end
 end
