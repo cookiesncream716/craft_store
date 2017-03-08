@@ -13,16 +13,19 @@ class UsersController < ApplicationController
 			product = Item.get_one(params[:id])
 			session[:cart].push(product)
 			session[:item_id].push(params[:id])
-			puts 'create session cart/item id'
-			puts session[:item_id]
+			# puts product.name
+			# puts 'create session cart/item id'
+			# puts session[:item_id]
+			# puts session[:cart]
 			flash[:added] = product.name + ' added to your cart'
 		else
 			product = Item.get_one(params[:id])
 			session[:cart].push(product)
 			session[:item_id].push(product.id)
-			puts 'adding to session'
-			puts product.id
-			puts session[:item_id]
+			# puts 'adding to session'
+			# puts product.id
+			# puts session[:item_id]
+			# puts session[:cart]
 			flash[:added] = product.name + ' added to your cart'
 		end
 		redirect_to root_path 	
@@ -34,7 +37,6 @@ class UsersController < ApplicationController
 		@cart = session[:cart]
 	end
 	def purchase
-		@cart = session[:cart]
 	end
 	def create
 		message = Buyer.create_buyer(user_params)
@@ -53,8 +55,8 @@ class UsersController < ApplicationController
 		puts @user
 		if @user && @user.authenticate(params[:password])
 			session[:buyer_id] = @user.id
-			# redirect_to '/items/cart'
-			redirect_to '/users/cart'
+			redirect_to '/items/cart'
+			# redirect_to '/users/cart'
 		else
 			flash[:message] = ['Invalid Login']
 			redirect_to '/users/purchase'

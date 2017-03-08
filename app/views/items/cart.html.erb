@@ -1,0 +1,30 @@
+<h3>cart</h3>
+
+<table class="table" id='cart'>
+	<thead>
+		<tr>
+			<th>Item</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% if @cart.length > 0 %>
+		<% @cart.each do | item | %>
+		<tr>
+			<td><%= item['name'] %></td>
+			<td class='cart_item'><%= item['price'] %></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</tbody>
+</table>
+
+<script language='javascript' type="text/javascript">
+	var data =  document.getElementsByClassName('cart_item');
+	console.log(data);
+	var sum = 0;
+	for(var i=0; i<data.length; i++){
+		sum += parseFloat(data[i].innerHTML);
+	}
+	document.getElementById('cart').innerHTML += '<tr><td>Total</td><td>' + sum.toFixed(2) + '</td></tr>';
+</script>

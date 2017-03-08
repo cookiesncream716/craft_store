@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.get_one(params[:id])
 	end
+	def cart
+		puts session[:cart]
+		@items = session[:cart]
+	end
 	private
 	def item_params
 		params.require(:item).permit(:name, :description, :price, :picture, :category_id)
