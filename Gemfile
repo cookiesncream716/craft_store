@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'hirb'
 gem 'bcrypt', '~> 3.1.7'
+gem 'figaro'
 gem 'stripe'
 
 group :development, :test do

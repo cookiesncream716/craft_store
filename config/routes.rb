@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get '/users/add_item/:id' => 'users#add_item'
   get '/users/cart' => 'users#cart'
   get '/users/purchase' => 'users#purchase'
+
+  resources :charges
 end
