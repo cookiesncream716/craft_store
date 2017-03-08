@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 	end
 	def cart
 		puts session[:cart]
-		@items = session[:cart]
+		@cart = session[:cart]
 	end
 	private
 	def item_params
