@@ -54,13 +54,9 @@
 	</div>
 </form>
 <% if flash[:message] %>
-	<% if flash[:message] == 'Information successfully saved' %>
-		<p><%= flash[:message] %></p>
-	<% else %>
-		<% flash[:message].each do | m | %>
-			<p><%= m %></p>
-		<% end %>
-	<% end %>
+	<% flash[:message].each do | m | %>
+		<p><%= m %></p>
+	<% end %>	
 <% end %>
 <div class='col-lg-6'>
 	<h3>Returning User</h3>

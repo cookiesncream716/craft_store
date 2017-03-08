@@ -53,7 +53,11 @@ class UsersController < ApplicationController
 		puts @user
 		if @user && @user.authenticate(params[:password])
 			session[:buyer_id] = @user.id
-			# redirect_to ''
+			# redirect_to '/items/cart'
+			redirect_to '/users/cart'
+		else
+			flash[:message] = ['Invalid Login']
+			redirect_to '/users/purchase'
 		end
 	end
 	private

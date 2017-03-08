@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/users/login' => 'users#login'
 
   get '/items/:id' => 'items#show'
+  # get '/items/cart' => 'items#cart'
   get '/users/add_item/:id' => 'users#add_item'
   get '/users/cart' => 'users#cart'
   get '/users/purchase' => 'users#purchase'

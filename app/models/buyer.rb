@@ -14,7 +14,7 @@ class Buyer < ApplicationRecord
   	new_buyer = self.new(buyer)
   	if new_buyer.valid? == true
   		new_buyer.save
-  		@message = 'Information successfully saved'
+  		@message = ['Information successfully saved']
   		return @message
   	else
   		puts new_buyer.errors.full_messages
